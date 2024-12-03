@@ -35,11 +35,11 @@
         
         <!-- Form Section -->
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <form method="post" class="p-4 border rounded ">
+          <form method="post" class="p-4 border rounded " method="POST" action="{{route('payment.store')}}">
             @csrf
             <div class="mb-4">
               <label for="inputid" class="form-label">User ID</label>
-              <input type="email" class="form-control" name="userid" id="inputid" placeholder="Enter User's ID" required>
+              <input type="text" class="form-control" name="userid" id="inputid" placeholder="Enter User's ID" required>
             </div>
             <div class="mb-4">
               <label for="inputamount" class="form-label">Amount</label>
@@ -49,6 +49,17 @@
               <button type="submit" class="btn btn-primary w-100">Transfer</button>
             </div>
           </form>
+          @if (session('error'))
+              <div class="alert alert-danger">
+                  {{ session('error') }}
+              </div>
+          @endif
+
+          @if (session('success'))
+              <div class="alert alert-success">
+                  {{ session('success') }}
+              </div>
+          @endif
         </div>
       </div>
          
@@ -68,11 +79,11 @@
     
     <!-- Form Section -->
     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-      <form method="post" class="p-4 border rounded bg-light shadow-sm">
+      <form method="post" class="p-4 border rounded bg-light shadow-sm" action="{{route('request.store')}}">
         @csrf
         <div class="mb-4">
-          <label for="requesterid" class="form-label">Your ID</label>
-          <input type="email" class="form-control" name="requesterid" id="requesterid" placeholder="Enter Your ID" required>
+          <label for="requesterid" class="form-label">User ID You Want to Request From</label>
+          <input type="text" class="form-control" name="requesterid" id="requesterid" placeholder="Enter User ID" required>
         </div>
         <div class="mb-4">
           <label for="amountrequest" class="form-label">Amount</label>
@@ -86,6 +97,19 @@
           <button type="submit" class="btn btn-primary w-100">Request Money</button>
         </div>
       </form>
+
+      @if (session('error'))
+      <div class="alert alert-danger">
+          {{ session('error') }}
+      </div>
+      @endif
+
+      @if (session('success'))
+          <div class="alert alert-success">
+              {{ session('success') }}
+          </div>
+      @endif
+      
     </div>
   </div>
 </div>

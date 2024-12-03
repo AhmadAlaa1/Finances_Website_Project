@@ -73,7 +73,7 @@
                   @if(Session::has('username'))
                     <ul class="dropdown">
                       <li><a href="{{route('payment.index')}}" class="nav-link">Payment</a></li>
-                      <li><a href="{{route('home.login')}}" class="nav-link">Profile</a></li>
+                      <li><a href="{{route('profile.index')}}" class="nav-link">Profile</a></li>
                     </ul>
                   @else
                     <ul class="dropdown">
